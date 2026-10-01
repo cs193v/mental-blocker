@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Safe Zone</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section id="game" class="screen" hidden>
+    <header class="hud">
+      <div class="hud-inner">
+        <div class="hud-cell hud-title">SAFE ZONE</div>
+        <div class="hud-cell hud-zones">
+          <div class="hud-label">SAFE ZONES LEFT</div>
+          <div class="hud-value" id="zones-left" data-zones-left="0">0</div>
+        </div>
+        <div class="hud-cell hud-level">
+          <div class="hud-label" id="level-label">LEVEL 1 OF 21</div>
+          <div class="hud-value" id="moves" data-moves="0" data-par="0"><span id="moves-count">0</span>/<span id="moves-par">0</span> <span id="moves-unit">moves</span></div>
+        </div>
+      </div>
+    </header>
+    <p class="instructions">SLIDE A BLOCK ONTO EACH WHITE SAFE ZONE</p>
+    <main class="board-area">
+      <div id="board" data-phase="idle"></div>
+    </main>
+    <footer class="controls">
+      <button id="restart" class="icon-button" type="button" aria-label="Restart level" title="Restart">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18.4 8.2A7.4 7.4 0 1 0 19.4 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M19.2 3.9v4.6h-4.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button id="sound" class="icon-button" type="button" aria-label="Sound" aria-pressed="true" title="Sound">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M6 11a6 6 0 0 0 12 0M12 17v3.5M8.5 20.5h7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path class="slash" d="M5 20.5L19 3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button id="open-menu" class="icon-button" type="button" aria-label="Select a level" title="Levels">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="5" cy="12" r="1.7" fill="currentColor"/>
+          <circle cx="12" cy="12" r="1.7" fill="currentColor"/>
+          <circle cx="19" cy="12" r="1.7" fill="currentColor"/>
+        </svg>
+      </button>
+    </footer>
+  </section>
+
+  <div id="level-select" class="overlay" hidden>
+    <div class="card" role="dialog" aria-modal="true" aria-labelledby="level-select-title">
+      <h1 id="level-select-title" class="card-title">Select a Level</h1>
+      <div id="level-grid" class="level-grid"></div>
+      <button id="level-cancel" class="button red" type="button">Cancel</button>
+    </div>
+  </div>
+
+  <div id="message" class="overlay" hidden>
+    <div class="card" role="alertdialog" aria-modal="true" aria-labelledby="message-text">
+      <p id="message-text" class="card-message"></p>
+      <div id="message-buttons" class="card-buttons"></div>
+    </div>
+  </div>
+
+  <script src="js/engine.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
