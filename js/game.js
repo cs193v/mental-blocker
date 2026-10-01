@@ -352,6 +352,7 @@
           tile.classList.remove('shake');
           void tile.offsetWidth; // restart the animation
           tile.classList.add('shake');
+          return;
         }
         startLevel(n);
       });

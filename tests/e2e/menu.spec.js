@@ -42,6 +42,14 @@ test.describe('menu', () => {
     await expect(page.locator('#level-label')).toHaveText(`LEVEL 1 OF ${LEVELS.length}`);
   });
 
+  test('clicking a locked level shakes it and stays on the menu', async ({ page }) => {
+    await page.goto('/');
+    await tile(page, 5).click({ force: true }); // aria-disabled tiles are still clickable for a real user
+    await expect(tile(page, 5)).toHaveClass(/shake/);
+    await expect(page.locator('#level-select')).toBeVisible();
+    await expect(page.locator('#game')).toBeHidden();
+  });
+
   test('completed levels unlock the next one and show a done mark', async ({ page }) => {
     await loadWithCompleted(page, [1, 2, 3, 4, 5]);
     expect(await lockedLevels(page)).toEqual(range(7, LEVELS.length));
